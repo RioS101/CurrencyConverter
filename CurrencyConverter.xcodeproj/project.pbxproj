@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9112B0FE247D4F86003F1F90 /* AllCurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112B0FD247D4F86003F1F90 /* AllCurrenciesTableViewController.swift */; };
 		919791CE247BDC070044DD9E /* CurrencyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919791CD247BDC070044DD9E /* CurrencyListTableViewController.swift */; };
 		91BFAC182477D8EC0052B852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BFAC172477D8EC0052B852 /* AppDelegate.swift */; };
 		91BFAC1A2477D8EC0052B852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BFAC192477D8EC0052B852 /* SceneDelegate.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9112B0FD247D4F86003F1F90 /* AllCurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrenciesTableViewController.swift; sourceTree = "<group>"; };
 		919791CD247BDC070044DD9E /* CurrencyListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListTableViewController.swift; sourceTree = "<group>"; };
 		91BFAC142477D8EC0052B852 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BFAC172477D8EC0052B852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				91BFAC192477D8EC0052B852 /* SceneDelegate.swift */,
 				91BFAC1D2477D8EC0052B852 /* Main.storyboard */,
 				919791CD247BDC070044DD9E /* CurrencyListTableViewController.swift */,
+				9112B0FD247D4F86003F1F90 /* AllCurrenciesTableViewController.swift */,
 				91BFAC202477D8F30052B852 /* Assets.xcassets */,
 				91BFAC222477D8F30052B852 /* LaunchScreen.storyboard */,
 				91BFAC252477D8F30052B852 /* Info.plist */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9112B0FE247D4F86003F1F90 /* AllCurrenciesTableViewController.swift in Sources */,
 				91BFAC182477D8EC0052B852 /* AppDelegate.swift in Sources */,
 				919791CE247BDC070044DD9E /* CurrencyListTableViewController.swift in Sources */,
 				91BFAC1A2477D8EC0052B852 /* SceneDelegate.swift in Sources */,

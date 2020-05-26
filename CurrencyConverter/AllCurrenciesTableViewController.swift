@@ -1,16 +1,16 @@
 //
-//  CurrencyListTableViewController.swift
+//  AllCurrenciesTableViewController.swift
 //  CurrencyConverter
 //
-//  Created by Riad on 5/25/20.
+//  Created by Riad on 5/26/20.
 //  Copyright © 2020 Projectum. All rights reserved.
 //
 
 import UIKit
 
-class CurrencyListTableViewController: UITableViewController {
+class AllCurrenciesTableViewController: UITableViewController {
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,23 +21,27 @@ class CurrencyListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    var chosenCurrency: [String] = ["EUR", "USD", "GBP", "RUB"]
+        var allCurrencies: [String] = ["EUR", "USD", "GBP", "RUB", "HKD", "IDR", "ILS", "DKK", "INR", "CHF", "MXN", "SZK", "SGD", "THB", "HRK", "MYR", "NOK", "CNY", "BGN", "PHP", "SEK", "PLN", "ZAR", "CAD", "ISK", "BRL", "RON", "NZD", "TRY", "JPY", "KRW", "HUF", "AUD"]
+        
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chosenCurrency.count
+        // #warning Incomplete implementation, return the number of rows
+        return allCurrencies.count
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chosenCurrency", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
 
-    // Configure the cell...
-        cell.textLabel?.text = chosenCurrency[indexPath.row]
+        // Configure the cell...
+        cell.textLabel?.text = allCurrencies[indexPath.row]
         return cell
     }
     
@@ -86,10 +90,5 @@ class CurrencyListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func unwindToChosenCurrencies(_ unwindSegue: UIStoryboardSegue) {
-//        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
-    }
 
 }
