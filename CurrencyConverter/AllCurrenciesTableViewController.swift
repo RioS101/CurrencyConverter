@@ -10,20 +10,34 @@ import UIKit
 
 class AllCurrenciesTableViewController: UITableViewController {
     
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        for checkedCurrency in checkedCurrencies {
+            for currency in allCurrencies {
+                if currency.title == checkedCurrency.title {
+                    currency.isChecked = true
+                    //break, continue, fallthrough? чтобы после нахождения дальше не искал
+                }
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+   
+    var allCurrencies = Currency.allCurrencies
     
-        var allCurrencies: [String] = ["EUR", "USD", "GBP", "RUB", "HKD", "IDR", "ILS", "DKK", "INR", "CHF", "MXN", "SZK", "SGD", "THB", "HRK", "MYR", "NOK", "CNY", "BGN", "PHP", "SEK", "PLN", "ZAR", "CAD", "ISK", "BRL", "RON", "NZD", "TRY", "JPY", "KRW", "HUF", "AUD"]
-        
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,7 +55,8 @@ class AllCurrenciesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = allCurrencies[indexPath.row]
+        cell.textLabel?.text = allCurrencies[indexPath.row].title
+        cell.accessoryType = allCurrencies[indexPath.row].isChecked ? .checkmark : .none
         return cell
     }
     
@@ -52,20 +67,37 @@ class AllCurrenciesTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            allCurrencies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
+            tableView.insertRows(at: [indexPath], with: .fade)
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
+    
+*/
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let item = allCurrencies[indexPath.row]
+               item.isChecked.toggle()
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else {return}
+       
+        if item.isChecked {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -81,14 +113,17 @@ class AllCurrenciesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    var checkedCurrencies: [Currency] = []
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        for currency in allCurrencies {
+            if currency.isChecked == true {
+                checkedCurrencies.append(currency)
+            }
+        }
     }
-    */
+    
 
 }

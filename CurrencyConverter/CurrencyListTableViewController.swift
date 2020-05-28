@@ -21,7 +21,7 @@ class CurrencyListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    var chosenCurrency: [String] = ["EUR", "USD", "GBP", "RUB"]
+    var chosenCurrency: [Currency] = [Currency(title: "EUR", isChecked: true, rate: nil)]
 
     // MARK: - Table view data source
 
@@ -37,7 +37,7 @@ class CurrencyListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chosenCurrency", for: indexPath)
 
     // Configure the cell...
-        cell.textLabel?.text = chosenCurrency[indexPath.row]
+        cell.textLabel?.text = chosenCurrency[indexPath.row].title
         return cell
     }
     
@@ -77,18 +77,22 @@ class CurrencyListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addItem",
+            let destinationVC = segue.destination as? AllCurrenciesTableViewController {
+            destinationVC.checkedCurrencies = chosenCurrency
+        }
+        
     }
-    */
     
     @IBAction func unwindToChosenCurrencies(_ unwindSegue: UIStoryboardSegue) {
-//        let sourceViewController = unwindSegue.source
+        if let sourceViewController = unwindSegue.source as? AllCurrenciesTableViewController {
+            chosenCurrency = sourceViewController.checkedCurrencies
+            tableView.reloadData()
+        }
         // Use data from the view controller which initiated the unwind segue
     }
 
