@@ -19,6 +19,12 @@ class AllCurrenciesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for currency in allCurrencies {
+            if currency.isChecked == true {
+                currency.isChecked = false
+            }
+        }
+        
         for checkedCurrency in checkedCurrencies {
             for currency in allCurrencies {
                 if currency.title == checkedCurrency.title {
@@ -27,6 +33,7 @@ class AllCurrenciesTableViewController: UITableViewController {
                 }
             }
         }
+//        tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -118,6 +125,7 @@ class AllCurrenciesTableViewController: UITableViewController {
     var checkedCurrencies: [Currency] = []
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        checkedCurrencies.removeAll()
         for currency in allCurrencies {
             if currency.isChecked == true {
                 checkedCurrencies.append(currency)

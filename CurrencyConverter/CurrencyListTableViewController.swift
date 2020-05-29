@@ -82,8 +82,10 @@ class CurrencyListTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItem",
-            let destinationVC = segue.destination as? AllCurrenciesTableViewController {
-            destinationVC.checkedCurrencies = chosenCurrency
+            let destinationNavigationController = segue.destination as? UINavigationController,
+            let allCurrenciesTableViewController = destinationNavigationController.topViewController as? AllCurrenciesTableViewController {
+            allCurrenciesTableViewController.checkedCurrencies.removeAll()
+            allCurrenciesTableViewController.checkedCurrencies = chosenCurrency
         }
         
     }
