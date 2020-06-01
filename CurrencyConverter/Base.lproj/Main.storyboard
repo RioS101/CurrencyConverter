@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,6 +33,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="573-mw-icU" kind="show" id="fDj-xZ-ebl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -49,6 +54,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddn-kg-LQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="744.92753623188412" y="147.99107142857142"/>
+        </scene>
+        <!--Rates View Controller-->
+        <scene sceneID="IPf-ka-R4S">
+            <objects>
+                <viewController id="573-mw-icU" customClass="RatesViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7zp-6j-JtN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJb-vL-aNQ">
+                                <rect key="frame" x="100" y="113" width="215" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-43-xjJ">
+                                <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MxI-gP-4DG">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ratesCell" id="fQb-W8-4B5" customClass="CollectionViewCell" customModule="CurrencyConverter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="98.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="XED-eQ-ptA">
+                                            <rect key="frame" x="0.0" y="0.0" width="188" height="98.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="currency Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41i-WX-FPD">
+                                                    <rect key="frame" x="15" y="10" width="158" height="32.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="currency rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toA-ag-AKa">
+                                                    <rect key="frame" x="15" y="62.5" width="158" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="toA-ag-AKa" secondAttribute="trailing" constant="15" id="KFz-2z-eh9"/>
+                                                <constraint firstItem="toA-ag-AKa" firstAttribute="top" secondItem="41i-WX-FPD" secondAttribute="bottom" constant="20" id="Rwe-GO-FXg"/>
+                                                <constraint firstAttribute="bottom" secondItem="toA-ag-AKa" secondAttribute="bottom" constant="15" id="iDR-ON-o7I"/>
+                                                <constraint firstItem="41i-WX-FPD" firstAttribute="top" secondItem="XED-eQ-ptA" secondAttribute="top" constant="10" id="lZL-XW-uRX"/>
+                                                <constraint firstItem="toA-ag-AKa" firstAttribute="leading" secondItem="XED-eQ-ptA" secondAttribute="leading" constant="15" id="qtu-rF-Mm3"/>
+                                                <constraint firstItem="41i-WX-FPD" firstAttribute="leading" secondItem="XED-eQ-ptA" secondAttribute="leading" constant="15" id="vYK-DG-v1f"/>
+                                                <constraint firstAttribute="trailing" secondItem="41i-WX-FPD" secondAttribute="trailing" constant="15" id="y6m-aP-syP"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="currencyRate" destination="toA-ag-AKa" id="Qo3-KX-qbU"/>
+                                            <outlet property="currencyTitle" destination="41i-WX-FPD" id="Uwc-x0-haB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="bottom" secondItem="1Md-IB-6FD" secondAttribute="bottom" id="3DQ-ui-LK5"/>
+                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="trailing" secondItem="1Md-IB-6FD" secondAttribute="trailing" id="5dJ-o5-28u"/>
+                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="leading" secondItem="1Md-IB-6FD" secondAttribute="leading" id="J9J-aN-NZ4"/>
+                            <constraint firstItem="1Md-IB-6FD" firstAttribute="trailing" secondItem="ZJb-vL-aNQ" secondAttribute="trailing" constant="99" id="Jfn-Qa-lPx"/>
+                            <constraint firstItem="ZJb-vL-aNQ" firstAttribute="top" secondItem="1Md-IB-6FD" secondAttribute="top" constant="25" id="KrM-Cx-ai1"/>
+                            <constraint firstItem="ZJb-vL-aNQ" firstAttribute="leading" secondItem="1Md-IB-6FD" secondAttribute="leading" constant="100" id="Os2-gl-Yab"/>
+                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="top" secondItem="ZJb-vL-aNQ" secondAttribute="bottom" constant="30" id="sHh-aq-96m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Md-IB-6FD"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y34-66-V8g"/>
+                    <connections>
+                        <outlet property="baseCurrencyTitle" destination="ZJb-vL-aNQ" id="K4i-P5-YX2"/>
+                        <outlet property="collectionView" destination="Bhj-43-xjJ" id="smn-Qz-7L9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGY-zU-odR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744.92753623188412" y="918.75"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="HOO-WM-QiS">

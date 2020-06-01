@@ -15,6 +15,8 @@
 		91BFAC212477D8F30052B852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BFAC202477D8F30052B852 /* Assets.xcassets */; };
 		91BFAC242477D8F30052B852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BFAC222477D8F30052B852 /* LaunchScreen.storyboard */; };
 		91C666DF247FBAD300DEE838 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C666DE247FBAD300DEE838 /* CurrencyModel.swift */; };
+		91C71EB62483F1BD005A7088 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C71EB52483F1BD005A7088 /* RatesViewController.swift */; };
+		91C71EB82483F2B4005A7088 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C71EB72483F2B4005A7088 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		91BFAC232477D8F30052B852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91BFAC252477D8F30052B852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91C666DE247FBAD300DEE838 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		91C71EB52483F1BD005A7088 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		91C71EB72483F2B4005A7088 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				91C666DE247FBAD300DEE838 /* CurrencyModel.swift */,
 				919791CD247BDC070044DD9E /* CurrencyListTableViewController.swift */,
 				9112B0FD247D4F86003F1F90 /* AllCurrenciesTableViewController.swift */,
+				91C71EB52483F1BD005A7088 /* RatesViewController.swift */,
+				91C71EB72483F2B4005A7088 /* CollectionViewCell.swift */,
 				91BFAC202477D8F30052B852 /* Assets.xcassets */,
 				91BFAC222477D8F30052B852 /* LaunchScreen.storyboard */,
 				91BFAC252477D8F30052B852 /* Info.plist */,
@@ -147,7 +153,9 @@
 				91C666DF247FBAD300DEE838 /* CurrencyModel.swift in Sources */,
 				9112B0FE247D4F86003F1F90 /* AllCurrenciesTableViewController.swift in Sources */,
 				91BFAC182477D8EC0052B852 /* AppDelegate.swift in Sources */,
+				91C71EB82483F2B4005A7088 /* CollectionViewCell.swift in Sources */,
 				919791CE247BDC070044DD9E /* CurrencyListTableViewController.swift in Sources */,
+				91C71EB62483F1BD005A7088 /* RatesViewController.swift in Sources */,
 				91BFAC1A2477D8EC0052B852 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
