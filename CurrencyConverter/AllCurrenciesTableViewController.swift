@@ -33,7 +33,6 @@ class AllCurrenciesTableViewController: UITableViewController {
                 }
             }
         }
-//        tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,7 +42,6 @@ class AllCurrenciesTableViewController: UITableViewController {
     }
    
     var allCurrencies = Currency.allCurrencies
-    
     
     // MARK: - Table view data source
 

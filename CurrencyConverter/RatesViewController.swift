@@ -7,18 +7,25 @@
 //
 
 import UIKit
-//basic setup for CollecitonView in ViewController
 //needs layout (flow) implementation if needed
 extension RatesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    //needs actual data from web server...
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        currenciesWithRates.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ratesCell", for: indexPath) as! CollectionViewCell
+        let item = currenciesWithRates[indexPath.row]
+        
+        cell.currencyTitle.text = item.title
+        if let rate = item.rate {
+            cell.currencyRate.text = String(rate)
+        }
+        
+        return cell
     }
-    
+
 }
 
 class RatesViewController: UIViewController {
@@ -29,11 +36,22 @@ class RatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        Currency.fetchRates { (rates) in
+            guard let ratesContainerType = rates else {return}
+            
+            for item in self.currencyTitles {
+                self.currenciesWithRates.append(Currency(title: item, isChecked: false, rate: ratesContainerType.rates[item]))
+            }
+        }
+        
         collectionView.dataSource = self
         collectionView.delegate = self
-        // Do any additional setup after loading the view.
     }
+    
+    var currenciesWithRates: [Currency] = []
+    var currencyTitles: [String] = ["EUR", "USD", "GBP", "RUB", "HKD", "IDR", "ILS", "DKK", "INR", "CHF", "MXN", "SZK", "SGB", "THB", "HRK", "MYR", "NOK", "CNY", "BGN", "PHP", "SEK", "PLN", "ZAR", "CAD", "ISK", "BRL", "RON", "NZD", "TRY", "JPY", "KRW", "HUF", "AUD"]
+    
     
 
     /*

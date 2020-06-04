@@ -8,7 +8,22 @@
 
 import Foundation
 
-class Currency {
+struct ResponseRates: Codable {
+    var rates: Dictionary<String, Double>
+    
+    enum CodingKeys: CodingKey {
+        case rates
+    }
+    
+    init(from decoder: Decoder) throws {
+        let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.rates = try valueContainer.decode(Dictionary<String, Double>.self, forKey: CodingKeys.rates)
+    }
+    
+}
+
+class Currency: Codable {
     var title: String
     var isChecked: Bool
     var rate: Double?
