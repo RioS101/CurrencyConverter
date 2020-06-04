@@ -88,6 +88,14 @@ class CurrencyListTableViewController: UITableViewController {
             allCurrenciesTableViewController.checkedCurrencies = chosenCurrency
         }
         
+        if segue.identifier == "ratesSegue",
+            let ratesViewController = segue.destination as? RatesViewController {
+            let selectedIndexPath = tableView.indexPathForSelectedRow
+            let selectedCurrency = chosenCurrency[selectedIndexPath!.row]
+            
+            ratesViewController.baseCurrency = selectedCurrency.title
+        }
+        
     }
     
     @IBAction func unwindToChosenCurrencies(_ unwindSegue: UIStoryboardSegue) {

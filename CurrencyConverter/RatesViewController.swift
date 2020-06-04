@@ -37,7 +37,10 @@ class RatesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Currency.fetchRates { (rates) in
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}
             
             for item in self.currencyTitles {
@@ -45,10 +48,10 @@ class RatesViewController: UIViewController {
             }
         }
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        baseCurrencyTitle.text = baseCurrency
     }
     
+    var baseCurrency: String = ""
     var currenciesWithRates: [Currency] = []
     var currencyTitles: [String] = ["EUR", "USD", "GBP", "RUB", "HKD", "IDR", "ILS", "DKK", "INR", "CHF", "MXN", "SZK", "SGB", "THB", "HRK", "MYR", "NOK", "CNY", "BGN", "PHP", "SEK", "PLN", "ZAR", "CAD", "ISK", "BRL", "RON", "NZD", "TRY", "JPY", "KRW", "HUF", "AUD"]
     

@@ -10,13 +10,9 @@ import Foundation
 
 extension Currency {
     
-    static func fetchRates(completion: @escaping (ResponseRates?) -> Void) {
+    static func fetchRates(query: [String: String], completion: @escaping (ResponseRates?) -> Void) {
         
         let session = URLSession.shared
-        
-        let query: [String: String] = [
-            "base": "USD"
-        ]
         
         let baseURL = URL(string: "https://api.ratesapi.io/api/latest")!
         let url = baseURL.withqueries(query)!

@@ -34,7 +34,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="573-mw-icU" kind="show" id="fDj-xZ-ebl"/>
+                                    <segue destination="573-mw-icU" kind="show" identifier="ratesSegue" id="fDj-xZ-ebl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
