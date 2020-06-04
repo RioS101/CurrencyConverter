@@ -54,11 +54,16 @@ class RatesViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         
+        //Network request
         Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}
             
             for item in self.currencyTitles {
                 self.currenciesWithRates.append(Currency(title: item, isChecked: false, rate: ratesContainerType.rates[item]))
+                //remove base currency from list of rates (because its value is not informative (1.0)
+                self.currenciesWithRates.removeAll { (currency) -> Bool in
+                    currency.title == self.baseCurrency
+                }
             }
         }
         
