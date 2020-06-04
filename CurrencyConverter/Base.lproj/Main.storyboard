@@ -64,13 +64,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJb-vL-aNQ">
-                                <rect key="frame" x="100" y="113" width="215" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="100" y="113" width="215" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-43-xjJ">
-                                <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MxI-gP-4DG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -94,11 +94,15 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="currency rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toA-ag-AKa">
                                                     <rect key="frame" x="15" y="62.5" width="158" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="158" id="nu7-pW-nVy"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.92594633070576216" green="0.93135310913705582" blue="0.90475538781587816" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="toA-ag-AKa" secondAttribute="trailing" constant="15" id="KFz-2z-eh9"/>
                                                 <constraint firstItem="toA-ag-AKa" firstAttribute="top" secondItem="41i-WX-FPD" secondAttribute="bottom" constant="20" id="Rwe-GO-FXg"/>
@@ -125,7 +129,7 @@
                             <constraint firstItem="1Md-IB-6FD" firstAttribute="trailing" secondItem="ZJb-vL-aNQ" secondAttribute="trailing" constant="99" id="Jfn-Qa-lPx"/>
                             <constraint firstItem="ZJb-vL-aNQ" firstAttribute="top" secondItem="1Md-IB-6FD" secondAttribute="top" constant="25" id="KrM-Cx-ai1"/>
                             <constraint firstItem="ZJb-vL-aNQ" firstAttribute="leading" secondItem="1Md-IB-6FD" secondAttribute="leading" constant="100" id="Os2-gl-Yab"/>
-                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="top" secondItem="ZJb-vL-aNQ" secondAttribute="bottom" constant="30" id="sHh-aq-96m"/>
+                            <constraint firstItem="Bhj-43-xjJ" firstAttribute="top" secondItem="ZJb-vL-aNQ" secondAttribute="bottom" constant="15" id="sHh-aq-96m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Md-IB-6FD"/>
                     </view>
@@ -133,6 +137,7 @@
                     <connections>
                         <outlet property="baseCurrencyTitle" destination="ZJb-vL-aNQ" id="K4i-P5-YX2"/>
                         <outlet property="collectionView" destination="Bhj-43-xjJ" id="smn-Qz-7L9"/>
+                        <outlet property="flowLayout" destination="MxI-gP-4DG" id="0hW-tu-cCq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGY-zU-odR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

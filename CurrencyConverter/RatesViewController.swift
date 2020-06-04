@@ -7,8 +7,7 @@
 //
 
 import UIKit
-//needs layout (flow) implementation if needed
-extension RatesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension RatesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         currenciesWithRates.count
@@ -22,8 +21,16 @@ extension RatesViewController: UICollectionViewDataSource, UICollectionViewDeleg
         if let rate = item.rate {
             cell.currencyRate.text = String(rate)
         }
-        
         return cell
+    }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let totalWidth = collectionView.bounds.size.width
+        let numberOfCellPerRow = 2
+        let sizeForCell = CGFloat(Int(totalWidth) / numberOfCellPerRow)
+        
+        return CGSize(width: sizeForCell, height: sizeForCell)
     }
 
 }
@@ -32,6 +39,7 @@ class RatesViewController: UIViewController {
     
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var baseCurrencyTitle: UILabel!
     
     override func viewDidLoad() {
@@ -39,6 +47,12 @@ class RatesViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        // UICollectionViewFlowLayout
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         
         Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}
