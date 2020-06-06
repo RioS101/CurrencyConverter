@@ -42,8 +42,38 @@ class RatesViewController: UIViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var baseCurrencyTitle: UILabel!
     
+    let refreshRates: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    //action method itself
+    @objc private func refresh(sender: UIRefreshControl) {
+        Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
+            guard let ratesContainerType = rates else {return}
+            
+            DispatchQueue.main.async {
+                //remove old data before populating a new one
+                self.currenciesWithRates.removeAll()
+                
+                for item in self.currencyTitles {
+                    self.currenciesWithRates.append(Currency(title: item, isChecked: false, rate: ratesContainerType.rates[item]))
+                    //remove base currency from list of rates (because its value is not informative (1.0)
+                    self.currenciesWithRates.removeAll { (currency) -> Bool in
+                        currency.title == self.baseCurrency
+                    }
+                }
+            }
+            
+        }
+        sender.endRefreshing()
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.refreshControl = refreshRates
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -55,9 +85,10 @@ class RatesViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         
         //Network request
+        //In this scenario API doesn't return all the required information but only a piece of it...
         Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}
-            
+            //why don't we need DispathQueue.main.async here?
             for item in self.currencyTitles {
                 self.currenciesWithRates.append(Currency(title: item, isChecked: false, rate: ratesContainerType.rates[item]))
                 //remove base currency from list of rates (because its value is not informative (1.0)

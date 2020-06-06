@@ -38,4 +38,11 @@ extension URL {
             { URLQueryItem(name: $0.0, value: $0.1) }
         return components?.url
     }
+    
+    //in this app we do not need this helper method because protocol of our API is already https. But if you want to support more secure protocol https over http just use this method when constucting url (simple type .withHTTPS() )
+    func withHTTPS() -> URL? {
+        var components = URLComponents.init(url: self, resolvingAgainstBaseURL: true)
+        components?.scheme = "https"
+        return components?.url
+    }
 }
