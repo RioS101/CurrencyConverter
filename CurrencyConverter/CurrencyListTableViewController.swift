@@ -19,6 +19,11 @@ class CurrencyListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let data = Currency.loadChosenCurrencies() {
+            chosenCurrency = data
+        } else {
+            chosenCurrency.append(Currency(title: "EUR", isChecked: true, rate: nil))
+        }
     }
     
     var chosenCurrency: [Currency] = [Currency(title: "EUR", isChecked: true, rate: nil)]
@@ -103,7 +108,8 @@ class CurrencyListTableViewController: UITableViewController {
             chosenCurrency = sourceViewController.checkedCurrencies
             tableView.reloadData()
         }
-        // Use data from the view controller which initiated the unwind segue
+        //save data every time when returning from allCurrencies screen to list of chosen currencies by pressing "Done" button.
+        Currency.saveChosenCurrencies(chosenCurrency)
     }
 
 }
