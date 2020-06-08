@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//helper type for fetching piece of required data(rates) from API.
 struct ResponseRates: Codable {
     var rates: Dictionary<String, Double>
     

@@ -13,6 +13,7 @@ extension Currency {
     static func fetchRates(query: [String: String], completion: @escaping (ResponseRates?) -> Void) {
         
         let session = URLSession.shared
+        session.configuration.timeoutIntervalForRequest = 5.0
         
         let baseURL = URL(string: "https://api.ratesapi.io/api/latest")!
         let url = baseURL.withqueries(query)!
