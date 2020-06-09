@@ -4,15 +4,31 @@
 //
 //  Created by Riad on 5/25/20.
 //  Copyright © 2020 Projectum. All rights reserved.
-//
+//https://www.hackingwithswift.com/example-code/networking/how-to-check-for-internet-connectivity-using-nwpathmonitor
 
 import UIKit
+import Network
 
 class CurrencyListTableViewController: UITableViewController {
     
+    let monitor = NWPathMonitor()
+    // The start method for NWPathMonitor requires that we provide a queue for the object to run on this queue:
+    let queue = DispatchQueue.global(qos: .background)
+    // or let queue = DispatchQueue(label: "Monitor")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        //that closure gets called every time the connection status changes
+        monitor.pathUpdateHandler = { path in
+            if path.status == .unsatisfied {
+                print("no connection")
+                DispatchQueue.main.async {
+                     self.performSegue(withIdentifier: "noConnectionSegue", sender: nil)
+                }
+            }
+        }
+        monitor.start(queue: queue)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

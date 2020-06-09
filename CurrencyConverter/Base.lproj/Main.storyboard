@@ -8,12 +8,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--No Connection View Controller-->
+        <scene sceneID="s91-FC-v5Q">
+            <objects>
+                <viewController id="68a-CZ-XbM" customClass="NoConnectionViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QhF-o5-qpg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noConnection" translatesAutoresizingMaskIntoConstraints="NO" id="8bh-F4-nMY">
+                                <rect key="frame" x="107" y="149" width="200" height="200"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lth-U8-Xhc">
+                                <rect key="frame" x="167" y="528" width="80" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="retryButtonTapped:" destination="68a-CZ-XbM" eventType="touchUpInside" id="nZ6-qc-Zy2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet access" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHJ-DZ-JRj">
+                                <rect key="frame" x="83.5" y="349" width="247.5" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lth-U8-Xhc" firstAttribute="centerX" secondItem="QhF-o5-qpg" secondAttribute="centerX" id="03Y-mc-SiT"/>
+                            <constraint firstItem="lth-U8-Xhc" firstAttribute="top" secondItem="XHJ-DZ-JRj" secondAttribute="bottom" constant="142" id="2KE-I8-S1R"/>
+                            <constraint firstItem="XHJ-DZ-JRj" firstAttribute="centerX" secondItem="QhF-o5-qpg" secondAttribute="centerX" id="Ppn-R3-iYQ"/>
+                            <constraint firstItem="XHJ-DZ-JRj" firstAttribute="top" secondItem="8bh-F4-nMY" secondAttribute="bottom" id="Z2j-sh-2tx"/>
+                            <constraint firstItem="8bh-F4-nMY" firstAttribute="centerX" secondItem="QhF-o5-qpg" secondAttribute="centerX" id="agE-5A-bLb"/>
+                            <constraint firstItem="8bh-F4-nMY" firstAttribute="top" secondItem="vxf-WQ-iwA" secondAttribute="top" constant="149" id="cY0-ju-Kt1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vxf-WQ-iwA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="boh-RA-iEz"/>
+                    <connections>
+                        <segue destination="lH3-Y7-9N6" kind="show" identifier="retrySegue" id="Pe5-aO-LLC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7UC-ob-aND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165" y="919"/>
+        </scene>
         <!--Currency List Table View Controller-->
         <scene sceneID="UCc-55-ooE">
             <objects>
                 <tableViewController id="lH3-Y7-9N6" customClass="CurrencyListTableViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="o7c-fA-iMv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -50,6 +96,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="68a-CZ-XbM" kind="show" identifier="noConnectionSegue" id="BN4-Wv-Q67"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddn-kg-LQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,17 +109,17 @@
             <objects>
                 <viewController id="573-mw-icU" customClass="RatesViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7zp-6j-JtN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJb-vL-aNQ">
-                                <rect key="frame" x="100" y="113" width="215" height="60"/>
+                                <rect key="frame" x="100" y="25" width="215" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-43-xjJ">
-                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MxI-gP-4DG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -149,7 +198,7 @@
             <objects>
                 <tableViewController id="JYh-we-Eaj" customClass="AllCurrenciesTableViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jlp-dr-iHg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -191,7 +240,7 @@
                 <navigationController id="hde-Be-nRe" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7WL-un-sNi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IxR-mu-LkQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -221,4 +270,10 @@
             <point key="canvasLocation" x="-165.21739130434784" y="147.99107142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pe5-aO-LLC"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="noConnection" width="200" height="200"/>
+    </resources>
 </document>

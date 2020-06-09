@@ -96,8 +96,10 @@ class RatesViewController: UIViewController {
                     currency.title == self.baseCurrency
                 }
             }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
-        
         baseCurrencyTitle.text = baseCurrency
     }
     
