@@ -16,3 +16,8 @@
 
 
 ## Used features:
+* UIViewController
+* UITableViewController
+* UICollectionView
+* Pull to refresh
+* SearchBar (not implemented yet)
