@@ -7,7 +7,9 @@
 //
 
 import UIKit
+// MARK: CollectionView
 extension RatesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    // MARK: UICollectionView data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         currenciesWithRates.count
@@ -35,20 +37,22 @@ extension RatesViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 }
 
+// MARK: ViewController
 class RatesViewController: UIViewController {
-    
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var baseCurrencyTitle: UILabel!
     
+    // MARK: Pull to refresh
+    //closure that is assigned to refreshControl property of collectionView
     let refreshRates: UIRefreshControl = {
        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
     
-    //action method itself
+    //action method itself thats passed to #selector
     @objc private func refresh(sender: UIRefreshControl) {
         Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}
@@ -84,7 +88,7 @@ class RatesViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         
-        //Network request
+        // MARK: Network request
         //In this scenario API doesn't return all the required information but only a piece of it...
         Currency.fetchRates(query: ["base" : baseCurrency]) { (rates) in
             guard let ratesContainerType = rates else {return}

@@ -32,6 +32,7 @@ extension Currency {
     }
 }
 
+//gives ability to dynamically change query parameter in request
 extension URL {
     func withqueries(_ queries: [String: String]) -> URL? {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)

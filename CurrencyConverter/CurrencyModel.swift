@@ -7,14 +7,14 @@
 //
 
 import Foundation
-//helper type for fetching piece of required data(rates) from API.
+//MARK: Helper type for fetching piece of required data(rates) from API.
 struct ResponseRates: Codable {
     var rates: Dictionary<String, Double>
     
     enum CodingKeys: CodingKey {
         case rates
     }
-    
+    //custom init b/c we're going to fetch only PIECE of all returned data
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -23,6 +23,7 @@ struct ResponseRates: Codable {
     
 }
 
+//MARK: Model object
 class Currency: Codable {
     var title: String
     var isChecked: Bool

@@ -14,17 +14,17 @@ class AllCurrenciesTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //make isCheked property of all currencies false
         for currency in allCurrencies {
             if currency.isChecked == true {
                 currency.isChecked = false
             }
         }
         
+        //then set isCheked property to true only for those currencies whose .title property is contained in checkedCurrencies
         for checkedCurrency in checkedCurrencies {
             for currency in allCurrencies {
                 if currency.title == checkedCurrency.title {
@@ -86,7 +86,7 @@ class AllCurrenciesTableViewController: UITableViewController {
     }
     
 */
-    
+    //MARK: - Table view delegate 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

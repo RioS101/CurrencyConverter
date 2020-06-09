@@ -11,6 +11,7 @@ import Network
 
 class CurrencyListTableViewController: UITableViewController {
     
+    //checking for internet connection...
     let monitor = NWPathMonitor()
     // The start method for NWPathMonitor requires that we provide a queue for the object to run on this queue:
     let queue = DispatchQueue.global(qos: .background)
@@ -42,7 +43,7 @@ class CurrencyListTableViewController: UITableViewController {
         }
     }
     
-    var chosenCurrency: [Currency] = [Currency(title: "EUR", isChecked: true, rate: nil)]
+    var chosenCurrency: [Currency] = []
 
     // MARK: - Table view data source
 
