@@ -8,11 +8,11 @@
 
 
 ## Screenshots:
-![add](Screengifs/1 - all currencies search and add.gif)
+![](Screengifs/add_search.gif)
 
-![rate](Screengifs/rate.gif)
+![](Screengifs/rate.gif)
 
-![noWiFI](Screengifs/noInternet.gif)
+![](Screengifs/noInternet.gif)
 
 
 ## Used features:
