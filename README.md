@@ -8,7 +8,7 @@
 
 
 ## Screenshots:
-![add](Screengifs/add.gif)
+![add](Screengifs/1 - all currencies search and add.gif)
 
 ![rate](Screengifs/rate.gif)
 
@@ -20,4 +20,4 @@
 * UITableViewController
 * UICollectionView
 * Pull to refresh
-* SearchBar (not implemented yet)
+* UISearchController
