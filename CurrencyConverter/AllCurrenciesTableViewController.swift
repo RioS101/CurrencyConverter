@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllCurrenciesTableViewController: UITableViewController {
+class AllCurrenciesTableViewController: UITableViewController, UISearchResultsUpdating {
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -39,29 +39,72 @@ class AllCurrenciesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // MARK: SearchController
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Type currency name to search"
+        navigationItem.searchController = searchController
+        // if table view isn't embedded in navigation controller then:   tableView.tableHeaderView = searchController.searchBar
+        
+        //set the title of cancel button to "done" in searchBar
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Done"
+        
     }
-   
+
+    var searchController: UISearchController!
+    //protocol's required method
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    var searchResults: [Currency] = []
+    
+    func filterContent(for searchText: String) {
+        searchResults = allCurrencies.filter({ (currency) -> Bool in
+            return currency.title.localizedCaseInsensitiveContains(searchText)
+//   or       return currency.title.lowercased().contains(searchText.lowercased())
+        })
+
+// даже без этого работает почему-то!!! Почему???
+//                for currency in searchResults {
+//                    if currency.isChecked == true {
+//                        for anotherCurrency in allCurrencies {
+//                            if anotherCurrency.title == currency.title {
+//                                anotherCurrency.isChecked = true
+//                            }
+//                        }
+//                    }
+//                }
+    }
+    
     var allCurrencies = Currency.allCurrencies
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return allCurrencies.count
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            return allCurrencies.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
 
-        // Configure the cell...
-        cell.textLabel?.text = allCurrencies[indexPath.row].title
-        cell.accessoryType = allCurrencies[indexPath.row].isChecked ? .checkmark : .none
+        let currency = searchController.isActive ? searchResults[indexPath.row] : allCurrencies[indexPath.row]
+        cell.textLabel?.text = currency.title
+        cell.accessoryType = currency.isChecked ? .checkmark : .none
         return cell
     }
     
@@ -90,7 +133,7 @@ class AllCurrenciesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let item = allCurrencies[indexPath.row]
+        let item = searchController.isActive ? searchResults[indexPath.row] : allCurrencies[indexPath.row]
                item.isChecked.toggle()
         
         guard let cell = tableView.cellForRow(at: indexPath) else {return}

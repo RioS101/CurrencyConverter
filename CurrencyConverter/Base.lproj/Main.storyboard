@@ -193,7 +193,7 @@
             </objects>
             <point key="canvasLocation" x="744.92753623188412" y="918.75"/>
         </scene>
-        <!--Root View Controller-->
+        <!--All Currencies-->
         <scene sceneID="HOO-WM-QiS">
             <objects>
                 <tableViewController id="JYh-we-Eaj" customClass="AllCurrenciesTableViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -216,7 +216,7 @@
                             <outlet property="delegate" destination="JYh-we-Eaj" id="x3q-7e-Cgf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Rga-T8-2um">
+                    <navigationItem key="navigationItem" title="All Currencies" id="Rga-T8-2um">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="6wg-ch-2j5">
                             <connections>
                                 <segue destination="8fk-oE-keG" kind="unwind" unwindAction="unwindToChosenCurrencies:" id="pde-Qq-dLf"/>
