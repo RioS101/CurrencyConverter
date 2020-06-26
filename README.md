@@ -16,8 +16,10 @@
 
 
 ## Used features:
+* UINavigationController
 * UIViewController
 * UITableViewController
 * UICollectionView
 * Pull to refresh
 * UISearchController
+* NWPathMonitor
