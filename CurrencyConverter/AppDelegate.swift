@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DBDebugToolkit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let tapTrigger = DBTapTrigger(numberOfTouchesRequired: 3)
+           let longPressTrigger = DBLongPressTrigger(minimumPressDuration: 1.0)
+           let shakeTrigger = DBShakeTrigger()
+           DBDebugToolkit.setup(with: [tapTrigger, longPressTrigger, shakeTrigger])
         return true
     }
 
