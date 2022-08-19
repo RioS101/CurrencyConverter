@@ -12,8 +12,6 @@
 
 ![](Screengifs/rate.gif)
 
-[//]: #       ![](Screengifs/noInternet.gif)
-
 
 ## Used features:
 * UINavigationController
